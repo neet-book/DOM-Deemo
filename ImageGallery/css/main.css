@@ -40,3 +40,13 @@ h1{
     margin: 10px;
     border-radius: 5px;
 }
+#description{
+    border: 1px solid;
+    border-radius: 5px;
+    width: 280px;
+    padding: 10px;
+    min-height: 100px;
+    position: absolute;
+    left: 70%;
+    top: 70%;
+}
