@@ -5,6 +5,11 @@ function showPic(whichpic){
     var source = whichpic.getAttribute("href");    //创建变量保存显示图片的href
     var placeholder = document.getElementById("placeholder");   //获得占位图片
     placeholder.setAttribute("src",source);
+    //添加修改描述的功能
+    var description = document.getElementById("description");
+    var text = whichpic.childNodes[0].nodeValue;
+    console.log(text);
+    description.childNodes[0].nodeValue = text;
 }
 
 function showPicDOM1( ){ //使用非DOM方法
@@ -18,6 +23,7 @@ ul.onclick = function(){
     var whichpic = event.target
     if(whichpic.tagName == "A"){
         showPic(whichpic);
+        return false;
     }
-    return false;
+    
 }
