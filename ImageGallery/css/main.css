@@ -4,3 +4,39 @@
     list-style-type: none;
     text-decoration: none;
 }
+
+h1{
+    text-align: center;
+    padding: 60px 0;
+}
+#container{
+    width: 1300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.show-picture{
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(0,-50%);
+    border-radius: 15px;
+    overflow: hidden;
+    background: #696969;
+}
+.show-picture a{
+    margin-left: 10px;
+    display: block;
+    padding: 10px 16px;
+    color: white;
+    border-top: solid 1px #5a5757;
+}
+.show-picture a:hover{
+    color: dodgerblue;
+}
+#placeholder{
+    margin: 10px;
+    border-radius: 5px;
+}
