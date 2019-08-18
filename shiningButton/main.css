@@ -1,0 +1,66 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background: black;
+}
+a{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    box-sizing: border-box;/* 设置内边距和边框不会再增加元素的高度和宽带，而是与内容部分相减 */
+    background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);/* linear-gradient函数用于创建一个渐变图像需要指定一个起始方向即角度，定义终止色，或多个颜色丰富渐变效果 */
+    background-size: 400%;/* 设置背景大小使得渐变效果更加梦幻 */
+    border-radius: 30px;
+    border: 1px solid white;
+    z-index: 1;
+}
+a:hover
+{
+	/*animation能够创建动画，可以设置关键帧名字，完成一次动画所需时间，播放模式，播放次数等，注意！必须设置所需时间*/
+	animation: animate 8s linear infinite;
+}
+/*@keyframes规定动画在不同阶段的效果*/
+@keyframes animate
+{
+	/*通过不同阶段改变背景位置，使得背景渐变效果发生改变*/
+	0%{
+		background-position: 0px;
+	}
+	100%{
+		background-position: 400%;
+	}
+	
+}
+a:before{
+	content: "";
+	/*通过设置绝对定位使其脱离文档流，并设置四个方向的位置将元素拉扯开*/
+	position: absolute;
+	top: -5%;
+	left: -5%;
+	right: -5%;
+	bottom: -5%;
+	z-index: -1;
+	background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+	background-size: 400%;
+	border-radius: 40px;
+	transition: 0.5s;
+	opacity: 0;
+	
+}
+/*a标签hover状态时伪类的效果*/
+a:hover:before{
+	filter: blur(20px);
+	opacity: 1;
+	animation: animate 8s linear infinite;
+
+}
