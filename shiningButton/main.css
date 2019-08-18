@@ -59,7 +59,7 @@ a:before{
 }
 /*a标签hover状态时伪类的效果*/
 a:hover:before{
-	filter: blur(20px);
+	filter: blur(20px);/* 通过filter(滤镜)属性设置bluer函数实现高斯模糊效果 */
 	opacity: 1;
 	animation: animate 8s linear infinite;
 
