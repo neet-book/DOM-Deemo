@@ -1,4 +1,16 @@
-
+//创建img元素并设置其id，src属性
+var placeholder = document.createElement("img");
+placeholder.setAttribute("id","placeholder");
+placeholder.setAttribute("src","img/cover.jpg");
+//创建p元素并设置其id和内容
+var description = document.createElement("p");
+var descText = document.createTextNode("Choose an image.");
+description.setAttribute("id","description");
+description.appendChild(descText);
+//将创建好的img和p元素添加进div
+var container = document.getElementById("container");
+container.appendChild(placeholder);
+container.appendChild(description)
 //定义占位符图片切换函数
 function showPic(whichpic){
     var whichpic = event.target;    //获得被点击的a元素
@@ -8,8 +20,8 @@ function showPic(whichpic){
     //添加修改描述的功能
     var description = document.getElementById("description");
     var text = whichpic.childNodes[0].nodeValue;
-    console.log(text);
     description.childNodes[0].nodeValue = text;
+    
 }
 
 function showPicDOM1( ){ //使用非DOM方法
