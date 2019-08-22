@@ -19,3 +19,13 @@ function insertAfter( newElement,targetElement ){		//targetElement:目标元素�
 		parent.indert(newElement,targetElement.nextSibling);
 	}
 }
+//向指定元素添加新类名
+function addClass(tag,newClass){
+			var tagClass = tag.getAttribute("class");
+			//检查是否有该类名,或已有类名是否相同
+			if(!tagClass){
+				tag.setAttribute("class",newClass);
+			}else if(!tagClass == newClass){
+				tag.setAttribute("class", tagClass + " " + newClass);
+			}
+		}
