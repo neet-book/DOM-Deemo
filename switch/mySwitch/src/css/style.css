@@ -1,0 +1,46 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style-type: none;
+}
+/* 基本布局 */
+.box{
+    max-width: 1440px;
+    margin: auto;
+}
+
+.header-container{
+    height: 32px;
+    padding: 24px;
+    position: relative;
+}
+.header-logo img{
+    position: absolute;
+}
+.header-nav{
+    position: absolute;
+    left: 100%;
+    transform: translate(-130%,0);
+} 
+.header-nav li{
+    display: inline-block;
+    margin: 20px;
+}
+
+/* 黑色模式 */
+.dark{
+    background: #6B7A90;
+}
+.dark-box{
+    background: #182538;
+    font-family: "Heebo", sans-serif;
+
+}
+
+.dark h1,.dark h2,.dark h3{
+    color :white
+}
+.dark p{
+    color: #8595AE;
+}
