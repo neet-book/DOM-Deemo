@@ -54,5 +54,34 @@ function displayCite(){
 }
 var result = displayCite();
 console.log(result);
-
-
+//创建导航快捷按键
+function displayAccesekey(){
+	//获取所有a元素
+	var accese = document.getElementsByTagName("a");
+	//console.log(accese);
+	if(accese<0){
+		return false;
+	}else{
+		var ul = document.createElement("ul");
+		var h2 = document.createElement("h2");
+		h2.innerHTML = "AcceseLiset";
+		ul.appendChild(h2);
+		//遍历所有a元素
+		for(var i = 0;i<accese.length;i++){
+			var accesekey = accese[i].getAttribute("accese");
+			//console.log(accesekey);
+			if(!accesekey){
+				continue;
+			}else{
+				//有access属性的a标签，获取access值，并创建列表项显示
+				var str = accesekey + ":" + accese[i].childNodes[0].nodeValue;
+				var text = document.createTextNode(str);
+				var li = document.createElement("li");
+				li.appendChild(text);
+				ul.appendChild(li);
+			}
+		}
+		document.body.appendChild(ul);
+	} 
+}
+displayAccesekey();
