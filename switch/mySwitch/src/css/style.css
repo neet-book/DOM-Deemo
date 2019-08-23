@@ -1,3 +1,9 @@
+.clearfix:after,.clearfix:before{
+    content: "";
+    display: block;
+    clear: both;
+
+}
 *{
     margin: 0px;
     padding: 0px;
@@ -18,7 +24,7 @@
 .header-logo img{
     position: absolute;
 }
-.header-nav{
+.nav-container{
     position: absolute;
     left: 100%;
     transform: translate(-130%,0);
@@ -44,3 +50,4 @@
 .dark p{
     color: #8595AE;
 }
+
