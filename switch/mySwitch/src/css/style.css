@@ -1,4 +1,4 @@
-.clearfix:after,.clearfix:before{
+.clearFix:after,.clearFix:before{
     content: "";
     display: block;
     clear: both;
@@ -14,40 +14,95 @@
 .box{
     max-width: 1440px;
     margin: auto;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
 }
+p{
+    font-size: 1rem;
+    line-height: 30px;
 
+}
+/* header部分 */
 .header-container{
-    height: 32px;
+    width: 100%;
     padding: 24px;
+    box-sizing: border-box;
+    
+}
+.header-logo{
+    width: 100%;
+    height: 100%;
+}
+/* hero 部分 */
+.hero{
+    padding: 88px 0 120px;
     position: relative;
 }
-.header-logo img{
-    position: absolute;
+.hero-container{
+    padding: 0 24px;
+    margin: 0 156px;
 }
-.nav-container{
-    position: absolute;
-    left: 100%;
-    transform: translate(-130%,0);
-} 
-.header-nav li{
-    display: inline-block;
-    margin: 20px;
+.hero-main{
+    max-width: 521px;
+    padding: 40 48px 0 0;
+}
+.hero-main h2{
+    font-size: 44px;
+    line-height: 54px;
+    margin:0 0 16px;
+    
+}
+.hero-main a{
+    display: block;
+    padding: 16px 32px;
+    width: 106px;
+    background: #535FD7;
+    text-align: center;
+    border-radius: 3px;
+}
+.hero-main p{
+    
+   margin-bottom:  30px;
+    
 }
 
-/* 黑色模式 */
+/* hero的media部分 */
+.header-illustration{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+
+}
+.header-illustration img{
+    position: absolute;
+    top: -172px;
+    right: -180px;
+}
+.hero-inner{
+    position: relative;
+}
+.hero-media{
+    position: absolute;
+    top: 0px;
+    right: -180px;
+}
+.hero-media-content{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.hero-media-content img{
+    transform: scale(0.8) translate3d(40px, 10px, 0);
+}
+/* dark主题 */
 .dark{
-    background: #6B7A90;
+    background: #202d3f;
+    color: white;
 }
 .dark-box{
     background: #182538;
-    font-family: "Heebo", sans-serif;
-
 }
-
-.dark h1,.dark h2,.dark h3{
-    color :white
-}
-.dark p{
-    color: #8595AE;
+.dark a{
+    color: white;
 }
 
