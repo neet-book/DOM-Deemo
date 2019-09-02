@@ -1,0 +1,86 @@
+.loader{
+    text-align: center;
+    margin: 220px auto;
+    position: relative;
+}
+/* 给div设置动画和旋转过度 */
+.loader .domino > div{
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: inline-flex;
+    transform: rotate(45deg);
+    animation: domino-effect 2.4s infinite ease-in-out;
+}
+/* 创建after伪元素并设置位置，动画 */
+.loader .domino > div::after{
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    opacity: 0;
+    position: relative;
+    top: 0px;
+    left: -43px;
+    animation: illusion 2.4s infinite ease-in-out;
+}
+/* 设置每个div，伪元素元素的样式各自动画持续时间 */
+.domino > div:nth-child(1){
+    margin: 13px;
+    background: #f50057;
+    animation-delay: 0.7s;  
+}
+.domino > div:nth-child(1)::after{
+    
+    background: #f50057;
+    animation-delay: 0.7s;  
+}
+
+.domino > div:nth-child(2){
+    margin: 13px;
+    background: #cc0148;
+    animation-delay: 1.2s;  
+}
+.domino > div:nth-child(2)::after{
+    
+    background: #cc0148;
+    animation-delay: 1.2s;  
+}
+
+.domino > div:nth-child(3){
+    margin: 13px;
+    background: #da21cb;
+    animation-delay: 1.8s;  
+}
+.domino > div:nth-child(3)::after{
+    
+    background: #da21cb;
+    animation-delay: 1.8s;  
+}
+
+.domino > div:nth-child(4){
+    margin: 13px;
+    background: #219fda;
+    animation-delay: 2.4s;  
+}
+.domino > div:nth-child(4)::after{
+    
+    background: #219fda;
+    animation-delay: 2.4s;  
+}
+
+@keyframes illusion{
+    0%, 25%{
+        opacity: 1;
+    }
+
+    25.3%, 33.3%, 100%{
+        opacity: 0;
+    }
+}
+
+@keyframes domino-effect{
+    20%, 100%{
+        transform: rotate(135deg);
+    }
+}
