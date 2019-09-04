@@ -5,55 +5,69 @@ var history = {
 }
 button.onclick = function() {
     var clickBut = event.target;
+    var resultValue = 0;
     if (! (clickBut.nodeName === "SPAN") ) return false;
 
     // 将点击按钮显示
     var displyContent = document.getElementsByClassName("content")[0];
     changeContent(displyContent, clickBut);
       
-    //获得计算值
+    //获得值
     if (/[0-9]/g.test(clickBut.id)){
+        let i = 0;
+        switch (true){
+            case expression.poeratorMark.length > i:
 
-        if (expression.poeratorMark.length == 0) {
+                i++;
+                if (expression.mark == -1){
+                    expression.varl = varl * -1;
+                }
 
-            expression.varl1 += clickBut.id;
-        } else {
+                expression.varlues.push(expression.varl);
+                expression.varl = "";
+                expression.varl += clickBut.id;
+                break;
+            case expression.poeratorMark.length == i:
 
-            expression.varl2 += clickBut.id;
+                expression.varl += clickBut.id;
+                break;
         }
     }
+    
     // 根据按键执行不同功能或设置标记
     switch(true){
+        // 功能键
         case clickBut.parentNode.className === "fun":
                
              exFunction(clickBut, expression, displyContent);
         break;
-
+        // 运算符
         case clickBut.parentNode.className === "operator":
-            if(clickBut.id === "mult" || clickBut.id === "division") {
 
-                expression.priority = 1;
+            if(clickBut.id === "mult" || clickBut.id === "division") {
+                expression.priority = 1;    
             }
             expression.poeratorMark.push(clickBut.id);
         break;
             //将浮点数标记为1
         case clickBut.id === "point":
             expression.float = 1;
+            expression.varl += "."
         break;
             //将符号标记为-1
         case clickBut.id === "negative":
             expression.mark = -1;
         break;
     }
-/******* 函数定义，测试区 start **********/
+    /******* 函数定义，测试区 start **********/
 
-/*  
- * 根据点击按钮更改显示内容
- * changeContent(target, btn, result)；
- * target :elementObject 需要修改内容的元素节点
- * btn ：elementObje 要显示的按钮
- * result : tring || number 要直接显示的内容
- */
+    /*  
+    * 根据点击按钮更改显示内容
+    * changeContent(target, btn, result)；
+    * target :elementObject 需要修改内容的元素节点
+    * btn ：elementObje 要显示的按钮
+    * result : tring || number 要直接显示的内容
+    */
     function changeContent(target, btn, result) {
 
         if ( ! ( result === undefined ) ) {
@@ -70,41 +84,104 @@ button.onclick = function() {
     }
 
     // 执行各项功能
-    function exFunction(elm, expre, target) {
+    function exFunction(elm, expr, target) {
+
         switch (true) {
+            //计算，输出结果，并初始化表达式对象
             case elm.id === "result":
-            history = compute(expre);
+            resultValue = compute(expr);
+            changeContent(displyContent, null, resultValue);
+            expression = new Expression();
             break;
+
+            //实现删除一项输入
             case elm.id === "delect":
 
             break;
+            //实现删除所有
             case elm.id === "delect-all":
                 expre = new Expression();
                 changeContent(target, elm, "")
             break;
-
-
         }
     }
 
-    function compute(){
-    
+    function compute(expr){
+        //检查各项标记
+        //处理浮点数
+        if (expr.float) {
+            var accuracy = [];
+            var acc = 0
+            expr.varlues.map(function(val) {
+                accuracy.pop( val.length - val.charAt(".") );
+            } );
+            expr.varlues.map(function(val) {
+                val = 10* arr * val; 
+            } );
+        }
+        //处理优先级
+        if (expr.priority){
+            
+            for(var i = 0 ; expr.priority.length > i; i++){
+                switch(true) {
+                    case expr.priority[i] === "mult":
+                        prValue = expr.varlues[i] * expr.varlues[i+1];
+                        expr.varlues = expr.varlues.splice(i, 0, prValue);
+                        expr.varlues = expr.varlues.splice(i+1, 1);
+                    break;
+                    
+                    case expr.priority[i] === "division":
+                        prValue = expr.varlues[i] / expr.varlues[i+1];
+                        expr.varlues = expr.varlues.splice(i, 0, prValue);
+                        expr.varlues = expr.varlues.splice(i+1, 1);
+                    break;
+                }
+            }
+        }
+
+        //将所有数进行加或减运算
+        var prValue = expr.varlues.shift();
+        for(var i = 0 ; expr.priority.length > i; i++){
+            var  num = 0;
+            switch(true) {
+                case expr.priority[i] === "add":
+                    num = expr.varlues.shift();
+                    prValue += num;
+
+                break;
+                
+                case expr.priority[i] === "sub":
+                    num = expr.varlues.shift();
+                    prValue -= num;
+                break;
+                default:
+                    continue;
+            }
+        }
+
+        if(expr.float) prValue = prValue / arr * val; 
+
+        return prValue;
+        
     }
 
-/******* 函数定义，测试区  end **********/
+    /******* 函数定义，测试区  end **********/
+}
+
+
 
 
 
     console.log(expression);
-}
+
 
 function Expression () {
-    this.varl1 = ""; //值1
-    this.varl2 = ""; //值2
-    this.poeratorMark = []; //运算符
+    this.varl = ""; //保存正在输入值
+    this.poeratorMark = []; //运算符位
     this.varlues = []; //所有的值
     this.mark = 1; //是否是带符号数,1为无符号数，-1为符号数
     this.float = 0; //是否是浮点数
     this.priority = 0; //优先级
 }
+
 
