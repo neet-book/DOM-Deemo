@@ -20,7 +20,8 @@ button.onclick = function() {
 
                 i++;
                 if (expression.mark == -1){
-                    expression.varl = varl * -1;
+                    expression.varl = expression.varl * -1;
+                    expression.mark = 1;
                 }
 
                 expression.varlues.push(expression.varl);
@@ -90,7 +91,7 @@ button.onclick = function() {
             //计算，输出结果，并初始化表达式对象
             case elm.id === "result":
             resultValue = compute(expr);
-            changeContent(displyContent, null, resultValue);
+            changeContent(displyContent, clickBut, resultValue);
             expression = new Expression();
             break;
 
@@ -109,6 +110,8 @@ button.onclick = function() {
     function compute(expr){
         //检查各项标记
         //处理浮点数
+        expression.varlues.push(expression.varl);
+
         if (expr.float) {
             var accuracy = [];
             var arr = 0
@@ -122,35 +125,43 @@ button.onclick = function() {
         //处理优先级
         if (expr.priority){
             var pr = []
-            for(var i = 0 ; expr.priority.length > i; i++){
+            pr.unshift( expr.varlues.shift() );
+            console.log(pr);
+            for( var i = 0 ; expr.poeratorMark.length > i; i++){
+                
                 switch(true) {
-                    case expr.priority[i] === "mult":
-                        prValue = expr.varlues[i] * expr.varlues[i+1];
-                        expr.varlues = expr.varlues.splice(i, 0, prValue);
-                        expr.varlues = expr.varlues.splice(i+1, 1);
+                    case expr.poeratorMark[i] === "mult":
+                        console.log(1);
+                        pr.unshift( pr.shift() * expr.varlues.shift() );
+                        console.log(pr);
                     break;
                     
-                    case expr.priority[i] === "division":
-                        prValue = expr.varlues[i] / expr.varlues[i+1];
-                        expr.varlues = expr.varlues.splice(i, 0, prValue);
-                        expr.varlues = expr.varlues.splice(i+1, 1);
+                    case expr.poeratorMark[i] === "division":
+                            var quotient = pr.shift() / expr.varlues.shift();
+                            if ( quotient == Infinity || quotient == -Infinity ) return "error: 0";
+                            pr.unshift( quotient );
+                            
                     break;
+                    default:
+                        pr.unshift( expr.varlues.shift() );
                 }
             }
+
+            expr.varlues = pr;
         }
 
         //将所有数进行加或减运算
-        var prValue = expr.varlues.shift();
-        for(var i = 0 ; expr.priority.length > i; i++){
+        var prValue = Number( expr.varlues.shift() );
+        for(var i = 0 ; expr.poeratorMark.length > i; i++){
             var  num = 0;
             switch(true) {
-                case expr.priority[i] === "add":
+                case expr.poeratorMark[i] === "add":
                     num = expr.varlues.shift();
                     prValue += Number(num);
 
                 break;
                 
-                case expr.priority[i] === "sub":
+                case expr.poeratorMark[i] === "sub":
                     num = expr.varlues.shift();
                     prValue -= num;
                 break;
@@ -160,19 +171,20 @@ button.onclick = function() {
         }
 
         if(expr.float) prValue = prValue / arr * val; 
-
         return prValue;
         
     }
 
     /******* 函数定义，测试区  end **********/
+
+    console.log(expression);
 }
 
 
 
 
 
-    console.log(expression);
+
 
 
 function Expression () {
