@@ -111,17 +111,17 @@ button.onclick = function() {
         //处理浮点数
         if (expr.float) {
             var accuracy = [];
-            var acc = 0
+            var arr = 0
             expr.varlues.map(function(val) {
                 accuracy.pop( val.length - val.charAt(".") );
             } );
             expr.varlues.map(function(val) {
-                val = 10* arr * val; 
+                val = 10* arr * parseFloat(val); 
             } );
         }
         //处理优先级
         if (expr.priority){
-            
+            var pr = []
             for(var i = 0 ; expr.priority.length > i; i++){
                 switch(true) {
                     case expr.priority[i] === "mult":
@@ -146,7 +146,7 @@ button.onclick = function() {
             switch(true) {
                 case expr.priority[i] === "add":
                     num = expr.varlues.shift();
-                    prValue += num;
+                    prValue += Number(num);
 
                 break;
                 
