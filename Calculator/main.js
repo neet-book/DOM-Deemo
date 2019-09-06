@@ -124,32 +124,30 @@ button.onclick = function() {
         }
         //处理优先级
         if (expr.priority){
-            var pr = []
-            pr.unshift( expr.varlues.shift() );
-            console.log(pr);
+            var count = []
+            count.push( expr.varlues.shift() );
+
             for( var i = 0 ; expr.poeratorMark.length > i; i++){
                 
                 switch(true) {
                     case expr.poeratorMark[i] === "mult":
-                        console.log(1);
-                        pr.unshift( pr.shift() * expr.varlues.shift() );
-                        console.log(pr);
+                        count.push( count.pop() * expr.varlues.shift() );
                     break;
                     
                     case expr.poeratorMark[i] === "division":
-                            var quotient = pr.shift() / expr.varlues.shift();
+                            var quotient = count.pop() / expr.varlues.shift();
                             if ( quotient == Infinity || quotient == -Infinity ) return "error: 0";
-                            pr.unshift( quotient );
+                            count.push( quotient );
                             
                     break;
                     default:
-                        pr.unshift( expr.varlues.shift() );
+                        count.push( expr.varlues.shift() );
                 }
             }
 
-            expr.varlues = pr;
+            expr.varlues = count;
         }
-
+        console.log("完成乘除运算", expr.varlues);
         //将所有数进行加或减运算
         var prValue = Number( expr.varlues.shift() );
         for(var i = 0 ; expr.poeratorMark.length > i; i++){
@@ -158,7 +156,6 @@ button.onclick = function() {
                 case expr.poeratorMark[i] === "add":
                     num = expr.varlues.shift();
                     prValue += Number(num);
-
                 break;
                 
                 case expr.poeratorMark[i] === "sub":
@@ -176,8 +173,6 @@ button.onclick = function() {
     }
 
     /******* 函数定义，测试区  end **********/
-
-    console.log(expression);
 }
 
 
