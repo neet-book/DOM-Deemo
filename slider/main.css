@@ -1,0 +1,40 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+img{
+	width: 588px;
+	height: 324px;
+}
+
+.container{
+	width: 588px;
+	height: 324px;
+	overflow: hidden;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}
+.slider-container{
+	width: 588px;
+	height: 324px;
+	position: relative;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.slider{
+	width: 500%;
+	position: absolute;
+	left: 0%;
+	transition: left ease-in-out;
+	transition-duration: 0.3s
+}
+.slider li{
+	float: left;
+}
+.no-transiton{
+	transition-duration: 0s;
+}

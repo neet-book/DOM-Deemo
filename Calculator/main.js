@@ -175,13 +175,6 @@ button.onclick = function() {
     /******* 函数定义，测试区  end **********/
 }
 
-
-
-
-
-
-
-
 function Expression () {
     this.varl = ""; //保存正在输入值
     this.poeratorMark = []; //运算符位
