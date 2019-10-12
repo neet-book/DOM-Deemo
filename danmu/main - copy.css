@@ -37,17 +37,24 @@ span{
 /*size控件*/
 
 #sizeBox{
-	border: 1px solid #10a6ea;
+	border: 2px solid #10a6ea;
 	width: 200px;
 	height: 30px;
 	text-align: justify;
 	position: relative;
+	border-radius: 3px;
+	opacity: 0;
+	transition: opacity 0.3s ;
 }
 
+#sizeBox:hover{
+	opacity: 1;
+}
 #sizeBox input{
 	width: 35px;
-	/*line-height: 2em;*/
+	line-height: 1.5em;
 	text-align: center;
+	font-size:16px;
 	border: none;
 	outline: none;
 	border-bottom: 1px solid #10a6ea;
@@ -63,7 +70,7 @@ span{
 	height: 100%;
 	padding: 0px 5px;
 	width: 25px;
-	
+	font-weight: bold;
 }
 #addSize{
 	position: absolute;

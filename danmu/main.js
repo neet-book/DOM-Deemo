@@ -44,6 +44,11 @@ class CreateDanmu {
 				sizeBox.innerHTML = htmlText;
 				elem.appendChild(sizeBox);
 			}
+
+				// 创建颜色组件
+			{
+
+			}
 		};
 	}
 	
