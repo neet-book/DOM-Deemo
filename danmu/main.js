@@ -34,20 +34,31 @@ class CreateDanmu {
 				// 创建sizebox
 			{
 				var sizeBox = document.createElement("div");
-				var htmlText =`
+				var sizeText =`
 					<a href="#" id="addSize">+</a>
 					<input type="text" id="font-Size">
 					<a href="#" id="subSize">-</a>
 					`;
 			
 				sizeBox.setAttribute("id", "sizeBox");
-				sizeBox.innerHTML = htmlText;
+				sizeBox.innerHTML = sizeText;
 				elem.appendChild(sizeBox);
 			}
 
 				// 创建颜色组件
-			{
+			{	var colorBox = document.createElement("div");
+				var colorText = `<form>
+						<input type="radio" id="black" name="colorSelection" value="#2f3542"><label for="black">黑色</label>
+						<input type="radio" id="red" name="colorSelection" value="#ff4757"><label for="red">红色</label>
+						<input type="radio" id="green" name="colorSelection" value="#2ed573"><label for="green">绿色</label><br>
+						<input type="radio" id="yellow" name="colorSelection" value="#eccc68"><label for="yellow">黄色</label>
+						<input type="radio" id="white" name="colorSelection" value="#ffffff"><label for="white">白色</label>
+						<input type="radio" id="purple" name="colorSelection" value="#B33771"><label for="purple">紫色</label>
+					</form>`;
 
+				colorBox.setAttribute("id", "colro-Set");
+				colorBox.innerHTML = colorText;
+				elem.appendChild(colorBox);
 			}
 		};
 	}
@@ -77,4 +88,3 @@ var features = document.getElementsByClassName("features")[0];
 var danmu = new CreateDanmu();
 danmu.createFeatures(features);
 
-console.log(danmu);

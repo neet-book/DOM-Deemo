@@ -50,9 +50,9 @@ span{
 #sizeBox:hover{
 	opacity: 1;
 }
-#sizeBox input{
+#sizeBox [type="text"]{
 	width: 35px;
-	line-height: 1.5em;
+	line-height: 1.4em;
 	text-align: center;
 	font-size:16px;
 	border: none;
@@ -82,3 +82,12 @@ span{
 	right: 0%;
 	border-left: 1px solid;
 }
+
+#colro-Set>form [type="radio"]{
+	display: none;
+}
+
+#colro-Set>form label:before{
+	
+}
+
